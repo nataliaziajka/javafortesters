@@ -10,11 +10,11 @@ public class MyFirstProgram {
 
   Square s = new Square(6);
 
-  System.out.println("Powierzchnia kwadratu o boku " + s.l + " = " + s.area());
+  System.out.println("Square surface with side " + s.l + " = " + s.area());
 
   Rectangle r = new Rectangle(4,6);
 
-  System.out.println("Powierzchnia prostokata o boku "  + r.a + " i boku " + r.b + " = " + r.area());
+  System.out.println("Rectangular surface with a side "  + r.a + " and second side " + r.b + " = " + r.area());
  }
 
   public static  void hello(String somebody){
