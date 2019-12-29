@@ -10,8 +10,8 @@ public class Point {
     this.p1=p1;
     this.p2=p2;
   }
-  public static double distance(Point point1, Point point2) {
-    return Math.sqrt(Math.pow(point2.p1 - point1.p1, 2) + Math.pow(point2.p2 - point1.p2, 2));
+  public double distance(Point point) {
+    return Math.sqrt(Math.pow(point.p1 - this.p1, 2) + Math.pow(point.p2 - this.p2, 2));
   }
 
   public static void main(String[] args) {
@@ -21,8 +21,10 @@ public class Point {
     Point c = new Point(-2, 1);
     Point d = new Point(5, 8);
 
-    System.out.println("Distance beetwen points a=(" + a.p1 + ", " + a.p2 + ") " + "and b=" + "(" + b.p1 + ", " + b.p2 + ") = " + distance(a, b) );
-    System.out.println("Distance beetwen points a=(" + c.p1 + ", " + c.p2 + ") " + "and b=" + "(" + d.p1 + ", " + d.p2 + ") = " + distance(c, d) );
+    System.out.println("Distance beetwen points a=(" + a.p1 + ", " + a.p2 + ") " + "and b=" + "(" + b.p1 + ", " + b.p2 + ") = " + a.distance(b) );
+    System.out.println("Distance beetwen points a=(" + c.p1 + ", " + c.p2 + ") " + "and b=" + "(" + d.p1 + ", " + d.p2 + ") = " + c.distance(d) );
+
+
   }
 
   }
