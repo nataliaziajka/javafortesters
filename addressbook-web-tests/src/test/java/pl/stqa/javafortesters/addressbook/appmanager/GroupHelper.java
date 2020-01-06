@@ -29,10 +29,18 @@ public class GroupHelper extends HelperBase{
   }
 
   public void selectGroup() {
-    click(By.xpath("//div[@id='content']/form/span[2]/input"));
+    click(By.xpath("//div[@id='content']/form/span[1]/input"));
   }
 
   public void initGroupCreation() {
     click(By.name("new"));
+  }
+
+  public void initGroupModification() {
+    click(By.name("edit"));
+  }
+
+  public void submitGroupModification() {
+    click(By.name("update"));
   }
 }
