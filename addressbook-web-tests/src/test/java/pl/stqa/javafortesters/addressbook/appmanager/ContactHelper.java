@@ -3,6 +3,8 @@ package pl.stqa.javafortesters.addressbook.appmanager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import pl.stqa.javafortesters.addressbook.model.ContactData;
 
 import static org.testng.Assert.assertTrue;
@@ -18,7 +20,8 @@ public class ContactHelper extends HelperBase{
   public void gotoContactGroupPage() {
     click(By.linkText("add new"));
   }
-  public void fillContactForm(ContactData contactData) {
+
+  public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"),contactData.getFirstname());
     type(By.name("middlename"),contactData.getMiddlename());
     type(By.name("lastname"), contactData.getLastname());
@@ -34,6 +37,12 @@ public class ContactHelper extends HelperBase{
     type(By.name("email2"),contactData.getSecondemail());
     type(By.name("email3"),contactData.getThirdemail());
     type(By.name("homepage"),contactData.getHomepage());
+
+    if(creation){
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }else{
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
   public void selectContact() {
 
