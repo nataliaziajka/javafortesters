@@ -39,9 +39,9 @@ public class ContactHelper extends HelperBase{
     type(By.name("homepage"),contactData.getHomepage());
 
     if(creation){
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      new Select(wd.findElement(By.name("update"))).selectByVisibleText(contactData.getContact());
     }else{
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
+      Assert.assertFalse(isElementPresent(By.name("update")));
     }
   }
   public void selectContact() {
@@ -86,7 +86,16 @@ public class ContactHelper extends HelperBase{
   public void returnToHomePage() {
       click(By.linkText("home"));
     }
+
+  public void createContact(ContactData contact) {
+    fillContactForm(contact, true);
+    submitContactCreation();
   }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
+  }
+}
 
 
 

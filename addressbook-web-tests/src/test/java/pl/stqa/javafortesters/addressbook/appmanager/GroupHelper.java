@@ -2,6 +2,8 @@ package pl.stqa.javafortesters.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import pl.stqa.javafortesters.addressbook.model.ContactData;
 import pl.stqa.javafortesters.addressbook.model.GroupData;
 
@@ -19,10 +21,16 @@ public class GroupHelper extends HelperBase{
     click(By.name("submit"));
   }
 
-  public void fillGroupForm(GroupData groupData) {
+  public void fillGroupForm(GroupData groupData, boolean creation) {
     type(By.name("group_name"), groupData.getName());
     type(By.name("group_header"), groupData.getHeader());
     type(By.name("group_footer"), groupData.getFooter());
+
+    if(creation){
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupData.getGroup());
+    }else{
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
   }
 
   public void deleteSelectedGroup() {
@@ -47,7 +55,7 @@ public class GroupHelper extends HelperBase{
 
   public void createGroup(GroupData group) {
     initGroupCreation();
-    fillGroupForm(group);
+    fillGroupForm(group,true);
     submitGroupCreation();
     returnToGroupPage();
   }
