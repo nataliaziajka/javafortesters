@@ -26,11 +26,6 @@ public class GroupHelper extends HelperBase{
     type(By.name("group_header"), groupData.getHeader());
     type(By.name("group_footer"), groupData.getFooter());
 
-    if(creation){
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupData.getGroup());
-    }else{
-      Assert.assertFalse(isElementPresent(By.name("new_group")));
-    }
   }
 
   public void deleteSelectedGroup() {

@@ -5,13 +5,13 @@ public class GroupData {
   private final String name;
   private final String header;
   private final String footer;
-  private final  String group;
 
-  public GroupData(String name, String header, String footer, String group) {
+
+  public GroupData(String name, String header, String footer) {
     this.name = name;
     this.header = header;
     this.footer = footer;
-    this.group = group;
+
   }
   public String getName() { return name; }
   public String getHeader() {
@@ -21,6 +21,4 @@ public class GroupData {
     return footer;
   }
 
-  public String getGroup() { return group;
   }
-}
