@@ -33,8 +33,9 @@ public class GroupHelper extends HelperBase{
   }
 
   public void selectGroup() {
-    click(By.xpath("//div[@id='content']/form/span[1]/input"));
+    click(By.name("selected[]"));
   }
+  //By.xpath("//div[@id='content']/form/span[1]/input")
 
   public void initGroupCreation() {
     click(By.name("new"));
@@ -57,5 +58,10 @@ public class GroupHelper extends HelperBase{
 
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
+  }
+
+  public int getGroupCount() {
+
+    return wd.findElements(By.name("selected[]")).size();
   }
 }
