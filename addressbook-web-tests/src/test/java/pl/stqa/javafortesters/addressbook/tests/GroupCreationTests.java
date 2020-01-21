@@ -1,6 +1,5 @@
 package pl.stqa.javafortesters.addressbook.tests;
 
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.stqa.javafortesters.addressbook.model.GroupData;

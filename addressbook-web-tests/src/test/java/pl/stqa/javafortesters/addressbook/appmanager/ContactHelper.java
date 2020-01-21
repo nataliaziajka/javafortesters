@@ -3,9 +3,14 @@ package pl.stqa.javafortesters.addressbook.appmanager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pl.stqa.javafortesters.addressbook.model.ContactData;
+import pl.stqa.javafortesters.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
@@ -95,7 +100,19 @@ public class ContactHelper extends HelperBase{
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[1]/td/input"));
   }
-}
+
+  public List<ContactData> getContactList() {
+    List<ContactData>contacts = new ArrayList<ContactData>();
+    List<WebElement>elements = wd.findElements(By.cssSelector("span.group"));
+    for(WebElement element : elements){
+      String name = element.getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      ContactData contact = new ContactData(id, "Natalia", "Joanna", "Ziajka", "natalia-ziajka", "Quality Assurance Engineer", "ABC", "Warszawska 25, Kraków", "Klimeckiego 1, Kraków", "+48123456789", "Limanowskiego 1, Kraków", "+48123456789", "nataliaziajka@gmail.com", "natalia-ziajka@wp.pl", "not applicable", "https://github.com/nataliaziajka", "test1");
+      contacts.add(contact);
+    }
+    return contacts;
+  }
+  }
 
 
 
