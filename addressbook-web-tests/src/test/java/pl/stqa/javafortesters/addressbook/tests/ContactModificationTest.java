@@ -3,16 +3,15 @@ package pl.stqa.javafortesters.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.stqa.javafortesters.addressbook.model.ContactData;
-import pl.stqa.javafortesters.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
 
 public class ContactModificationTest extends TestBase {
 
-  @Test
+  @Test(enabled = false)
   public void testContactModification() throws Exception {
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     if(app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Natalia", "Joanna", "Ziajka", "natalia-ziajka", "Quality Assurance Engineer", "ABC", "Warszawska 25, Kraków", "Klimeckiego 1, Kraków", "+48123456789", "Limanowskiego 1, Kraków", "+48123456789", "nataliaziajka@gmail.com", "natalia-ziajka@wp.pl", "not applicable", "https://github.com/nataliaziajka", "test1"));
     }
