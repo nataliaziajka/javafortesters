@@ -2,67 +2,24 @@ package pl.stqa.javafortesters.addressbook.model;
 
 public class ContactData {
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  private int id;
-  private final String firstname;
-  private final String middlename;
-  private final String lastname;
-  private final String nickname;
-  private final String title;
-  private final String comapany;
-  private final String address;
-  private final String homeaddress;
-  private final String mobilephone;
-  private final String workaddress;
-  private final String fax;
-  private final String email;
-  private final String secondemail;
-  private final String thirdemail;
-  private final String homepage;
+  private int id =Integer.MAX_VALUE;
+  private String firstname;
+  private String middlename;
+  private String lastname;
+  private String nickname;
+  private String title;
+  private String comapany;
+  private String address;
+  private String homeaddress;
+  private String mobilephone;
+  private String workaddress;
+  private String fax;
+  private String email;
+  private String secondemail;
+  private String thirdemail;
+  private String homepage;
   private String contact;
 
-  public ContactData(int id, String firstname, String middlename, String lastname, String nickname, String title, String comapany, String address, String homeaddress, String mobilephone, String workaddress, String fax, String email, String secondemail, String thirdemail, String homepage, String contact) {
-    this.id = id;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.title = title;
-    this.comapany = comapany;
-    this.address = address;
-    this.homeaddress = homeaddress;
-    this.mobilephone = mobilephone;
-    this.workaddress = workaddress;
-    this.fax = fax;
-    this.email = email;
-    this.secondemail = secondemail;
-    this.thirdemail = thirdemail;
-    this.homepage = homepage;
-    this.contact = contact;
-  }
-
-  public ContactData(String firstname, String middlename, String lastname, String nickname, String title, String comapany, String address, String homeaddress, String mobilephone, String workaddress, String fax, String email, String secondemail, String thirdemail, String homepage, String contact) {
-    this.id = Integer.MAX_VALUE;
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.title = title;
-    this.comapany = comapany;
-    this.address = address;
-    this.homeaddress = homeaddress;
-    this.mobilephone = mobilephone;
-    this.workaddress = workaddress;
-    this.fax = fax;
-    this.email = email;
-    this.secondemail = secondemail;
-    this.thirdemail = thirdemail;
-    this.homepage = homepage;
-    this.contact = contact;
-  }
   public String getContact() {
     return contact;
   }
@@ -131,6 +88,77 @@ public class ContactData {
     return id;
   }
 
+  public ContactData withId(int id) {
+
+    this.id = id;
+    return this;
+  }
+
+  public ContactData withFirstname(String firstname) {
+    this.firstname = firstname;
+    return this;
+  }
+
+  public ContactData withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
+
+  public ContactData withLastname(String lastname) {
+    this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public ContactData withTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public ContactData withComapany(String comapany) {
+    this.comapany = comapany;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withHomeaddress(String homeaddress) {
+    this.homeaddress = homeaddress;
+    return this;
+  }
+
+  public ContactData withMobilephone(String mobilephone) {
+    this.mobilephone = mobilephone;
+    return this;
+  }
+
+  public ContactData withWorkaddress(String workaddress) {
+    this.workaddress = workaddress;
+    return this;
+  }
+
+  public ContactData withFax(String fax) {
+    this.fax = fax;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+  public ContactData withSecondemail(String secondemail) {
+    this.secondemail = secondemail;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -150,4 +178,20 @@ public class ContactData {
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
+
+  public ContactData withThirdemail(String thirdemail) {
+    this.thirdemail = thirdemail;
+    return this;
+  }
+
+  public ContactData withHomepage(String homepage) {
+    this.homepage = homepage;
+    return this;
+  }
+
+  public ContactData withContact(String contact) {
+    this.contact = contact;
+    return this;
+  }
+
 }

@@ -13,13 +13,13 @@ public class ContactDeletionTest extends TestBase {
 
     app.goTo().gotoHomePage();
     if(app.getContactHelper().isThereAContact()){
-      app.getContactHelper().createContact(new ContactData("Natalia", "Joanna", "Ziajka", "natalia-ziajka", "Quality Assurance Engineer", "ABC", "Warszawska 25, Kraków", "Klimeckiego 1, Kraków", "+48123456789", "Limanowskiego 1, Kraków", "+48123456789", "nataliaziajka@gmail.com", "natalia-ziajka@wp.pl", "not applicable", "https://github.com/nataliaziajka", "test1"));
+      app.getContactHelper().createContact(new ContactData().withFirstname("Natalia").withLastname("Ziajka"));
     }
-    List<ContactData> before = app.getContactHelper().getContactList();
+    List<ContactData> before = app.getContactHelper().all();
     app.getContactHelper().selectContact();
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().closeAlert();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    List<ContactData> after = app.getContactHelper().all();
     Assert.assertEquals(after.size(), before.size()-1);
 
     before.remove(before.size()-1);
