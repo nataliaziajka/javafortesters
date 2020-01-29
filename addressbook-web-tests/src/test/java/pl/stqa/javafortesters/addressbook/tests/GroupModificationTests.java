@@ -10,6 +10,7 @@ import pl.stqa.javafortesters.addressbook.model.Groups;
 import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.testng.Assert.assertEquals;
 
 public class GroupModificationTests extends TestBase {
@@ -30,8 +31,10 @@ public class GroupModificationTests extends TestBase {
     GroupData group = new GroupData()
         .withId(modifiedGroup.getId()).withName("test1").withHeader("null").withFooter("null");
     app.group().modifyGroup(group);
+    assertThat(app.group().count(), equalTo(before.size()));
     Groups after = app.group().all();
-    assertEquals(after.size(), before.size());
+
+    //assertEquals(after.size(), before.size());
     assertThat(after, CoreMatchers.equalTo(before.without(modifiedGroup).withAdded(group)));
   }
 
