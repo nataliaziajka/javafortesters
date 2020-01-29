@@ -43,12 +43,10 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContact() {
-
     click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
     acceptNextAlert = true;
   }
   public void selectContactById(int id) {
-
     click(By.cssSelector("input[value='"+id+ "']"));
     acceptNextAlert = true;
   }
@@ -81,8 +79,14 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void initContactModification() {
-    click(By.xpath("//img[@alt='Edit']"));
+  public void initContactModificationById(int id) {
+    //click(By.xpath("//img[@alt='Edit']"));
+    //--------------------------
+//    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[values='%s']",id)));
+//    WebElement row =checkbox.findElement(By.xpath("./../.."));
+//    List<WebElement>cells = row.findElements(By.tagName("tag"));
+//    cells.get(7).findElement(By.tagName("a")).click();
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']",id))).click();
   }
 
   public void submitContactModification() {
@@ -114,9 +118,11 @@ public class ContactHelper extends HelperBase {
 
       String firstName = cells.get(1).getText();
       String lastName = cells.get(2).getText();
+      String title = cells.get(3).getText();
+      String allPhones = cells.get(5).getText();
+
       //String middlename =cells.get(3).getText();
       //String nickname = cells.get(4).getText();
-      String title = cells.get(3).getText();
 //      String company = cells.get(6).getText();
 //      String address = cells.get(7).getText();
 //      String homeaddress = cells.get(8).getText();
@@ -130,7 +136,7 @@ public class ContactHelper extends HelperBase {
 //      String contact = cells.get(16).getText();
 
       ContactData contactData = new ContactData().withId(id).withFirstname(firstName)
-              .withLastname(lastName).withTitle(title);
+              .withLastname(lastName).withTitle(title).withAllPhones(allPhones);
 //      ContactData contactData = new ContactData().withId(id).withFirstname(firstName).withMiddlename(middlename)
 //              .withLastname(lastName).withNickname(nickname).withTitle(title).withComapany(company)
 //              .withAddress(address).withHomeaddress(homeaddress).withMobilephone(mobilephone)
@@ -151,9 +157,19 @@ public class ContactHelper extends HelperBase {
   }
   public void modify(ContactData contact) {
     selectContactById(contact.getId());
-    initContactModification();
+    initContactModificationById(contact.getId());
     submitContactModification();
     returnToHomePage();
+  }
+
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String title = wd.findElement(By.name("title")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withTitle(title);
+
   }
 }
 
