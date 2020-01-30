@@ -24,22 +24,8 @@ public class ContactHelper extends HelperBase {
 
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"), contactData.getFirstname());
-    // type(By.name("middlename"), contactData.getMiddlename());
     type(By.name("lastname"), contactData.getLastname());
-//    type(By.name("nickname"), contactData.getNickname());
-    type(By.name("title"), contactData.getTitle());
-//    type(By.name("company"), contactData.getComapany());
-//    type(By.name("address"), contactData.getAddress());
-//    type(By.name("home"), contactData.getHomeaddress());
-//    type(By.name("mobile"), contactData.getMobilephone());
-//    type(By.name("work"), contactData.getWorkaddress());
-//    type(By.name("fax"), contactData.getFax());
-//    type(By.name("email"), contactData.getEmail());
-//    type(By.name("email2"), contactData.getSecondemail());
-//    type(By.name("email3"), contactData.getThirdemail());
-//    type(By.name("homepage"), contactData.getHomepage());
 
-//
   }
 
   public void selectContact() {
@@ -110,43 +96,20 @@ public class ContactHelper extends HelperBase {
   public Contacts all() {
     Contacts contacts = new Contacts();
 
-    List<WebElement> elements = wd.findElements(By.className("entry"));
+    List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
-
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
 
       String firstName = cells.get(1).getText();
       String lastName = cells.get(2).getText();
-      String title = cells.get(3).getText();
       String allPhones = cells.get(5).getText();
 
-      //String middlename =cells.get(3).getText();
-      //String nickname = cells.get(4).getText();
-//      String company = cells.get(6).getText();
-//      String address = cells.get(7).getText();
-//      String homeaddress = cells.get(8).getText();
-//      String mobilephone = cells.get(9).getText();
-//      String workaddress = cells.get(10).getText();
-//      String fax = cells.get(11).getText();
-//      String email = cells.get(12).getText();
-//      String secondemail= cells.get(13).getText();
-//      String thirdemail=cells.get(14).getText();
-//      String homepage=cells.get(15).getText();
-//      String contact = cells.get(16).getText();
-
       ContactData contactData = new ContactData().withId(id).withFirstname(firstName)
-              .withLastname(lastName).withTitle(title).withAllPhones(allPhones);
-//      ContactData contactData = new ContactData().withId(id).withFirstname(firstName).withMiddlename(middlename)
-//              .withLastname(lastName).withNickname(nickname).withTitle(title).withComapany(company)
-//              .withAddress(address).withHomeaddress(homeaddress).withMobilephone(mobilephone)
-//              .withWorkaddress(workaddress).withFax(fax).withEmail(email).withSecondemail(secondemail)
-//              .withThirdemail(thirdemail).withHomepage(homepage).withContact(contact);
+              .withLastname(lastName).withAllPhones(allPhones);
 
       contacts.add(contactData);
-
     }
-
     return contacts;
 
   }
@@ -166,9 +129,11 @@ public class ContactHelper extends HelperBase {
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
-    String title = wd.findElement(By.name("title")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withTitle(title);
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
 
   }
 }
