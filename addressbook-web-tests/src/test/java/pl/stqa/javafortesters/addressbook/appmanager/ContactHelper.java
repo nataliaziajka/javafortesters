@@ -108,7 +108,7 @@ public class ContactHelper extends HelperBase {
       ContactData contactData = new ContactData().withId(id).withFirstname(firstName)
               .withLastname(lastName).withAllPhones(allPhones);
 
-      contacts.add(contactData);
+        contacts.add(contactData);
     }
     return contacts;
 
