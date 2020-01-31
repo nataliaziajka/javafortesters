@@ -1,5 +1,7 @@
 package pl.stqa.javafortesters.addressbook.model;
 
+import java.io.File;
+
 public class ContactData {
 
   private int id =Integer.MAX_VALUE;
@@ -14,19 +16,15 @@ public class ContactData {
   private String email;
   private String email2;
   private String email3;
+  private File photo;
 
-  public String getAllPhones() {
+  public File getPhoto() { return photo; }
 
-    return allPhones;
-  }
-  public String getAllEmails() {
+  public String getAllPhones() { return allPhones; }
 
-    return allEmails;
-  }
-  public String getAddress() {
+  public String getAllEmails() { return allEmails; }
 
-    return address;
-  }
+  public String getAddress() { return address; }
 
   public String getFirstname() {
     return firstname;
@@ -67,6 +65,10 @@ public class ContactData {
   public ContactData withId(int id) {
 
     this.id = id;
+    return this;
+  }
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
     return this;
   }
 
