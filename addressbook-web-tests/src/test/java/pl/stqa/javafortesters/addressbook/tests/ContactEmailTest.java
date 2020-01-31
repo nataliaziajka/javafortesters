@@ -12,7 +12,6 @@ import static pl.stqa.javafortesters.addressbook.tests.TestBase.app;
 public class ContactEmailTest {
 
   @Test
-
   public void testContactEmail() {
 
     app.goTo().gotoHomePage();
