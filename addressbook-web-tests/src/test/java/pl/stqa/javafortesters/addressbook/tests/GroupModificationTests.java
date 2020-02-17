@@ -23,7 +23,7 @@ public class GroupModificationTests extends TestBase {
     }
   }
 
-  @Test(enabled=false)
+  @Test()
   public void testGroupModification() throws Exception {
 
     Groups before = app.group().all();
@@ -36,7 +36,10 @@ public class GroupModificationTests extends TestBase {
 
     //assertEquals(after.size(), before.size());
     assertThat(after, CoreMatchers.equalTo(before.without(modifiedGroup).withAdded(group)));
+    verifyGroupListInUI();
   }
+
+
 
 
 }

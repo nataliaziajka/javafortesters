@@ -4,8 +4,11 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import pl.stqa.javafortesters.addressbook.model.ContactData;
 import pl.stqa.javafortesters.addressbook.model.Contacts;
+import pl.stqa.javafortesters.addressbook.model.GroupData;
+import pl.stqa.javafortesters.addressbook.model.Groups;
 import java.util.List;
 import static org.testng.Assert.assertTrue;
 
@@ -137,7 +140,9 @@ public class ContactHelper extends HelperBase {
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
 
   }
-}
+  }
+
+
 
 
 

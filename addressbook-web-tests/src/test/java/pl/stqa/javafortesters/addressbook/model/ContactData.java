@@ -1,24 +1,74 @@
 package pl.stqa.javafortesters.addressbook.model;
 
-import java.io.File;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
+import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name="addressbook")
 public class ContactData {
 
-  private int id =Integer.MAX_VALUE;
+  @Id
+  @Column(name="id")
+  private int id;
+  //private int id =Integer.MAX_VALUE;
+  @Column(name="firstname")
   private String firstname;
-  private String lastname;
-  private String mobilephone;
-  private String workphone;
-  private String homephone;
-  private String allPhones;
-  private String allEmails;
-  private String address;
-  private String email;
-  private String email2;
-  private String email3;
-  private File photo;
 
-  public File getPhoto() { return photo; }
+  @Column(name="lastname")
+  private String lastname;
+
+  @Column(name="mobile")
+  @Type(type="text")
+  private String mobilephone;
+
+  @Column(name="work")
+  @Type(type="text")
+  private String workphone;
+
+  @Column(name="home")
+  @Type(type="text")
+  private String homephone;
+
+  @Transient
+  private String allPhones;
+
+  @Transient
+  private String allEmails;
+
+  @Column(name="address")
+  @Type(type="text")
+  private String address;
+
+  @Column(name="email")
+  @Type(type="text")
+  private String email;
+
+  @Column(name="email2")
+  @Type(type="text")
+  private String email2;
+
+  @Column(name="email3")
+  @Type(type="text")
+  private String email3;
+
+  @Column(name="photo")
+  @Type(type="text")
+  private String photo;
+
+  public Groups getGroups() {
+    return new Groups(groups);
+  }
+
+  @ManyToMany(fetch =FetchType.EAGER)
+  @JoinTable(name ="address_in_groups",
+  joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name= "goup_id"))
+  private Set<GroupData> groups = new HashSet<GroupData>();
+
+  public File getPhoto() { return new File(photo); }
 
   public String getAllPhones() { return allPhones; }
 
@@ -68,7 +118,7 @@ public class ContactData {
     return this;
   }
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 

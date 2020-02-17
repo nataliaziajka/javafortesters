@@ -32,6 +32,8 @@ public class ApplicationManager {
 
     String target = System.getProperty("target","local");
     properties.load(new FileReader(new File(String.format("src/test/resources/local.properties",target))));
+
+
     String browser = BrowserType.FIREFOX;
     if(Objects.equals(browser, BrowserType.FIREFOX)){
       wd = new FirefoxDriver();
@@ -66,5 +68,6 @@ public class ApplicationManager {
   public ContactHelper contact() {
     return contactHelper;
   }
+
 }
 
