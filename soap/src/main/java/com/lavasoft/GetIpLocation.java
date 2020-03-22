@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "GetIpLocation")
 public class GetIpLocation {
 
-    protected String sIp;
+    public String sIp;
 
     /**
      * Gets the value of the sIp property.
