@@ -1,3 +1,5 @@
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile
+
 apply plugin: 'java'
 
 repositories{
@@ -8,7 +10,10 @@ dependencies{
     testCompile group: 'org.testng', name: 'testng', version: '7.1.0'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.14.0'
     testCompile group: 'org.hamcrest', name: 'java-hamcrest', version: '2.0.0.0'
-
+    compile group: 'commons-net', name: 'commons-net', version: '3.6'
+    compile group: 'org.subethamail', name: 'subethasmtp', version: '3.1.7'
+    compile group: 'ru.lanwen.verbalregex', name: 'java-verbal-expressions', version: '1.4'
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 }
 
 test{

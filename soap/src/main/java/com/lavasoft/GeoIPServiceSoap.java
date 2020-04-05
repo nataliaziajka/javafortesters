@@ -48,7 +48,7 @@ public interface GeoIPServiceSoap {
     @RequestWrapper(localName = "GetIpLocation", targetNamespace = "http://lavasoft.com/", className = "com.lavasoft.GetIpLocation")
     @ResponseWrapper(localName = "GetIpLocationResponse", targetNamespace = "http://lavasoft.com/", className = "com.lavasoft.GetIpLocationResponse")
     @WebResult(name = "GetIpLocationResult", targetNamespace = "http://lavasoft.com/")
-    public GeoIPService getIpLocation(
+    public String getIpLocation(
 
         @WebParam(name = "sIp", targetNamespace = "http://lavasoft.com/")
         String sIp
