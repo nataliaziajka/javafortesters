@@ -41,3 +41,4 @@ addressbook-web-tests/build/distributions/sandbox.tar
 addressbook-web-tests/build/distributions/sandbox.zip
 addressbook-web-tests/build/scripts/sandbox
 addressbook-web-tests/build/tmp/jar/MANIFEST.MF
+.idea/libraries/Gradle__antlr_antlr_2_7_7.xml
